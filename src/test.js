@@ -1,7 +1,7 @@
-function dumb(){
-    return(
+function dumb() {
+    return (
         <div>
-            hello !
+            hello dumb alekhyagha !
         </div>
     )
 }
