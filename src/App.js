@@ -1,10 +1,13 @@
-import Dumb from './test'
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
 const App = () => {
   return (
-    <div>
-      hi dad!
-      <Dumb/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<div>home</div>} />
+        <Route path="about" element={<div>about</div>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
