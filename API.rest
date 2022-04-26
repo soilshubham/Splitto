@@ -1,0 +1,35 @@
+POST http://localhost:5000/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Sahil Shubham",
+    "username": "frozn",
+    "password": "temp123",
+    "role": "admin"
+}
+
+###
+
+POST http://localhost:5000/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "frozn",
+    "password": "temp123"
+}
+
+###
+
+POST http://localhost:5000/user/add-bday HTTP/1.1
+content-type: application/json
+
+{
+    "name": "frozn",
+    "birthday": "2020-01-01"
+}
+
+###
+GET http://localhost:5000/user/authenticated HTTP/1.1
+
+###
+GET http://localhost:5000/user/logout HTTP/1.1
