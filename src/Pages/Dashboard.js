@@ -3,7 +3,7 @@ import Sidebar from "../Components/Sidebar/sidebar"
 const Dashboard = () => {
     return (
         <div className="bg-[#FAFBFF] min-h-screen">
-            <div class="grid grid-cols-4 gap-4 h-screen p-5">
+            <div className="grid grid-cols-4 gap-4 h-screen p-5">
                 <div className="h-full">
                     <Sidebar />
                 </div>
