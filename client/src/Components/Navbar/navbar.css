@@ -10,7 +10,7 @@
     position: absolute;
     width: 69px;
     height: 24px;
-    left: 145px;
+    left: 80px;
     top: 43px;
 
     font-family: 'Montserrat';
@@ -20,4 +20,32 @@
     line-height: 24px;
 
     color: #3734A9;
+}
+
+.startFreeButton {
+    position: absolute;
+    width: 137px;
+    height: 46px;
+    right: 80px;
+    top: 28px;
+    background:#FF5C66;
+    color:#fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signIn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    position: absolute;
+    width: 60px;
+    height: 19px;
+    right: 260px;
+    top: 47px;
 }
