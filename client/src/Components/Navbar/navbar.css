@@ -1,0 +1,23 @@
+.container{
+    position: absolute;
+    width: 1178px;
+    height: 52px;
+    left: 145px;
+    top: 28px;
+}
+
+.logo {
+    position: absolute;
+    width: 69px;
+    height: 24px;
+    left: 145px;
+    top: 43px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #3734A9;
+}

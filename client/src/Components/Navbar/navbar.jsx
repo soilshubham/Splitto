@@ -1,7 +1,12 @@
 import React from "react";
+import './navbar.css';
 
-const navbar = () => {
-  return <div>navbar</div>;
+const Navbar = () => {
+  return (
+  <div className="container">
+    <h1 className="logo">Splitto</h1>
+  </div>
+  )
 };
 
-export default navbar;
+export default Navbar;
