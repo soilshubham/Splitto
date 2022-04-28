@@ -1,35 +1,63 @@
-POST http://localhost:5000/user/register HTTP/1.1
+### Register
+
+POST http://localhost:5000/api/auth/register HTTP/1.1
+content-type: application/json
+
+
+{
+    "username": "sdsdsd",
+    "email": "sdsdsds@test.com",
+    "password": "1234"
+}
+
+### Login
+
+POST http://localhost:5000/api/auth/login HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Sahil Shubham",
-    "username": "frozn",
-    "password": "temp123",
-    "role": "admin"
+    "email": "samu@test.com",
+    "password": "1234"
 }
 
-###
+### Update User
 
-POST http://localhost:5000/user/login HTTP/1.1
+PUT http://localhost:5000/api/user/626948426a669628de657621 HTTP/1.1
 content-type: application/json
 
 {
-    "username": "frozn",
-    "password": "temp123"
+    "username": "newusername",
+    "userID": "626948426a669628de657621"
 }
 
-###
+### Delete User
 
-POST http://localhost:5000/user/add-bday HTTP/1.1
+DELETE http://localhost:5000/api/user/626948426a669628de657621 HTTP/1.1
 content-type: application/json
 
 {
-    "name": "frozn",
-    "birthday": "2020-01-01"
+    "userID": "626948426a669628de657621"
 }
 
-###
-GET http://localhost:5000/user/authenticated HTTP/1.1
+### Get User
 
-###
-GET http://localhost:5000/user/logout HTTP/1.1
+GET http://localhost:5000/api/user/626a5da704fbbc32e29b6259 HTTP/1.1
+content-type: application/json
+
+### Add friend to user
+
+PUT http://localhost:5000/api/user/626a5d8004fbbc32e29b6257/friend HTTP/1.1
+content-type: application/json
+
+{
+    "userID": "626a5da704fbbc32e29b6259"
+}
+
+### Remove friend from user
+
+PUT http://localhost:5000/api/user/626a5d8004fbbc32e29b6257/unfriend HTTP/1.1
+content-type: application/json
+
+{
+    "userID": "626a5da704fbbc32e29b6259"
+}
