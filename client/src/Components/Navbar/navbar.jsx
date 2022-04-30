@@ -1,14 +1,18 @@
 import React from "react";
-import './navbar.css';
+import "./navbar.css";
 
 const Navbar = () => {
   return (
-  <div className="container">
-    <h1 className="logo">Splitto</h1>
-    <h1 className="signIn">Sign In</h1>
-    <button className="startFreeButton"> Start Free </button>
-  </div>
-  )
+    <div className="container px-4 md:px-32 py-10 font-manrope">
+      <div className="flex items-center">
+        <h1 className="mr-auto text-purp1 font-extrabold text-lg">Splitto</h1>
+        <button className="tracking-wide text-base mr-5">Register</button>
+        <button className="tracking-wide bg-color3 py-3 px-9 rounded-lg text-white max-w-max text-base">
+          Log In
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;
