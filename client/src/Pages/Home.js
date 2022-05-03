@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css';
-import Navbar from '../Components/Navbar/Navbar';
+import Navbar from '../Components/Navbar/navbar';
 import BGBokeh from '../images/BackgroundBokeh.svg';
 import { Link } from 'react-router-dom';
 const Home = () => {

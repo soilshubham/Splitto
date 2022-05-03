@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './styles.css';
-import Navbar from '../Components/Navbar/Navbar';
+import Navbar from '../Components/Navbar/navbar';
 import { Link } from 'react-router-dom';
 import { LoginUser } from '../api';
 import { useNavigate } from "react-router-dom";
