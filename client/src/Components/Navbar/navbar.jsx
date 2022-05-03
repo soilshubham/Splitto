@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="container px-4 md:px-32 py-10 font-manrope">
+    <div className="px-4 md:px-32 py-10 font-manrope">
       <div className="flex items-center">
         <h1 className="mr-auto text-purp1 font-extrabold text-lg">
           <Link to="/">Splitto</Link>
