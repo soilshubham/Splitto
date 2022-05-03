@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
@@ -19,6 +20,12 @@ mongoose.connect(process.env.MONGO_URL, {
 app.use(express.json());
 app.use(helmet());
 app.use(morgan('common'));
+app.use(cors());
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
 
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
