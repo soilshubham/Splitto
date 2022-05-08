@@ -12,7 +12,7 @@ module.exports = {
         'manrope': ['Manrope', 'sans-serif']
       },
       colors: {
-        'color3': '#FF5C66',
+        'color3': '#FF6A74',
         'purp1': '#3734A9'
       },
     },

@@ -13,7 +13,7 @@ const Navbar = () => {
           <button className="tracking-wide text-base mr-5">Register</button>
         </Link>
         <Link to="/login">
-          <button className="tracking-wide bg-color3 py-3 px-9 rounded-lg text-white max-w-max text-base">
+          <button className="tracking-wide bg-[#9370DB] py-3 px-9 rounded-lg text-white max-w-max text-base">
             Log In
           </button>
         </Link>

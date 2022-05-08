@@ -5,9 +5,9 @@ content-type: application/json
 
 
 {
-    "username": "sdsdsd",
-    "email": "sdsdsds@test.com",
-    "password": "1234"
+    "username": "soil2",
+    "email": "soil2@gmail.com",
+    "password": "12345"
 }
 
 ### Login
@@ -16,8 +16,8 @@ POST http://localhost:5000/api/auth/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "sdsdsds@test.com",
-    "password": "1234"
+    "email": "soil2@gmail.com",
+    "password": "12345"
 }
 
 ### Update User
@@ -41,7 +41,7 @@ content-type: application/json
 
 ### Get User
 
-GET http://localhost:5000/api/user/626a5da704fbbc32e29b6259 HTTP/1.1
+GET http://localhost:5000/api/user/62723b26d2170c982bfca347 HTTP/1.1
 content-type: application/json
 
 ### Add friend to user

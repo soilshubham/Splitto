@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User');
+const Group = require('../models/Group');
 const bcrypt = require('bcrypt');
 
 // update user
@@ -49,7 +50,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
-        const { password, updatedAt, ...userData } = user._doc;
+        const { password, updatedAt, createdAt, ...userData } = user._doc;
         res.status(200).json(userData);
     }
     catch (err) {

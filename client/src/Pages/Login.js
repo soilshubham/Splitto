@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './styles.css';
-import Navbar from '../Components/Navbar/navbar';
+import Navbar from '../Components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
 import { LoginUser } from '../api';
 import { useNavigate } from "react-router-dom";
+import { getGroupData } from '../utility/utilFunctions';
 
 const Login = () => {
     let navigate = useNavigate();
@@ -15,6 +16,8 @@ const Login = () => {
         e.preventDefault();
         const res = await LoginUser({ email, password });
         if (!res.msgError) {
+            let updatedGroupArray = await getGroupData(res.user.groups);
+            res.user.groups = updatedGroupArray;
             localStorage.setItem('userData', JSON.stringify(res.user));
             navigate('/dashboard');
         }
@@ -51,7 +54,7 @@ const Login = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)} />
                         <button
-                            className="bg-color3 p-4 min-w-full rounded-lg text-white max-w-max"
+                            className="bg-[#9370DB] p-4 min-w-full rounded-lg text-white max-w-max"
                             onClick={handleSubmit}>
                             Login
                         </button>
