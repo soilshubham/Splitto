@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User');
+const Group = require('../models/Group');
 const bcrypt = require('bcrypt');
 
 // Register
@@ -48,6 +49,7 @@ router.post('/login', async (req, res) => {
                 username: user.username,
                 email: user.email,
                 friends: user.friends,
+                groups: user.groups,
                 _id: user._id,
                 isAdmin: user.isAdmin,
             };
@@ -70,5 +72,31 @@ router.post('/login', async (req, res) => {
         res.status(400).json({ msgError: true, msg: err.message });
     }
 });
+
+// Create Group
+router.post('/create-group', async (req, res) => {
+    try {
+        const newGroup = await new Group({
+            name: req.body.name,
+            users: [],
+            entries: [],
+        });
+        const user = await User.findById(req.body.userID);
+        user.groups.push(newGroup._id);
+        newGroup.users.push(user._id);
+        await user.save();
+        await newGroup.save();
+        res.json({
+            msg: 'Group created successfully',
+            msgError: false,
+        });
+    }
+    catch (err) {
+        res.json({
+            msg: err.message,
+            msgError: true,
+        });
+    }
+})
 
 module.exports = router;

@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         type: Array,
         default: []
     },
+    groups: {
+        type: Array,
+        default: []
+    },
     isAdmin: {
         type: Boolean,
         default: false

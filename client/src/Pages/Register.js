@@ -12,9 +12,15 @@ const Register = () => {
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const res = await RegisterUser({ username, email, password });
-        console.log(res);
+        try {
+            e.preventDefault();
+            const res = await RegisterUser({ username, email, password });
+            console.log(res);
+            navigate('/login');
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 
     useEffect(() => {
@@ -47,7 +53,7 @@ const Register = () => {
                             className="bg-slate-100 p-4 min-w-full rounded-lg"
                             placeholder='Password' />
                         <button
-                            className="bg-color3 p-4 min-w-full rounded-lg text-white max-w-max"
+                            className="bg-[#9370DB] p-4 min-w-full rounded-lg text-white max-w-max"
                             onClick={handleSubmit}>
                             Register
                         </button>
