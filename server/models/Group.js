@@ -4,8 +4,7 @@ const groupSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        min: 3,
-        max: 20
+        min: 3
     },
     users: {
         type: Array,

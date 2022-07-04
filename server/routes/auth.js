@@ -12,7 +12,7 @@ router.post('/register', async (req, res) => {
 
         // Create new user
         const newUser = await new User({
-            username: req.body.username,
+            name: req.body.name,
             email: req.body.email,
             password: hashPassword,
         });
@@ -46,12 +46,10 @@ router.post('/login', async (req, res) => {
         }
         else {
             const userData = {
-                username: user.username,
+                name: user.name,
                 email: user.email,
-                friends: user.friends,
                 groups: user.groups,
                 _id: user._id,
-                isAdmin: user.isAdmin,
             };
             const validPassword = await bcrypt.compare(req.body.password, user.password);
             if (validPassword) {
@@ -60,7 +58,8 @@ router.post('/login', async (req, res) => {
                     msg: "User logged in successfully",
                     user: userData
                 });
-            } else {
+            }
+            else {
                 res.json({
                     msgError: true,
                     msg: "Invalid password"
@@ -69,7 +68,10 @@ router.post('/login', async (req, res) => {
         }
     }
     catch (err) {
-        res.status(400).json({ msgError: true, msg: err.message });
+        res.status(400).json({
+            msgError: true,
+            msg: err.message
+        });
     }
 });
 
@@ -79,7 +81,6 @@ router.post('/create-group', async (req, res) => {
         const newGroup = await new Group({
             name: req.body.name,
             users: [],
-            entries: [],
         });
         const user = await User.findById(req.body.userID);
         user.groups.push(newGroup._id);

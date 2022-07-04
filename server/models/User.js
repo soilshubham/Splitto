@@ -14,18 +14,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    friends: {
-        type: Array,
-        default: []
-    },
     groups: {
         type: Array,
         default: []
     },
-    isAdmin: {
-        type: Boolean,
-        default: false
-    }
 }, { timestamps: true });
 
 
