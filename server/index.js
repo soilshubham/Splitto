@@ -6,6 +6,8 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
 
+const port = process.env.PORT || 5000;
+
 const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
 const groupRoutes = require('./routes/group');
@@ -32,12 +34,10 @@ app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/group', groupRoutes);
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
+app.get('/', (req, res) => res.send('Hello World'));
 
 
 
-app.listen(5000, () => {
-    console.log('listening on port 5000');
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
 });
