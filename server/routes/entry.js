@@ -10,8 +10,8 @@ router.post('/add', async (req, res) => {
         const newEntry = await new Entry({
             name: req.body.name,
             amount: req.body.amount,
-            payer: req.body.payerID,
-            paidFor: req.body.paidForID,
+            payer: req.body.payer,
+            paidFor: req.body.paidFor,
         });
 
         group.entries.push(newEntry._id);
@@ -23,9 +23,9 @@ router.post('/add', async (req, res) => {
         });
     }
     catch (err) {
-        res.status(500).json({ 
-            msgError: true, 
-            msg: "Error: " + err 
+        res.status(500).json({
+            msgError: true,
+            msg: "Error: " + err
         });
     }
 })
