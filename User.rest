@@ -1,63 +1,52 @@
 ### Register
 
-POST http://localhost:5000/api/auth/register HTTP/1.1
+POST http://localhost:8000/api/auth/register HTTP/1.1
 content-type: application/json
 
 
 {
-    "username": "soil2",
-    "email": "soil2@gmail.com",
+    "name": "shubham",
+    "email": "test02@gmail.com",
     "password": "12345"
 }
 
+# {
+#     "name": "sahilsahil",
+#     "email": "test01@gmail.com",
+#     "password": "12345"
+# }
+
 ### Login
 
-POST http://localhost:5000/api/auth/login HTTP/1.1
+POST http://localhost:8000/api/auth/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "soil2@gmail.com",
+    "email": "test02@gmail.com",
     "password": "12345"
 }
 
 ### Update User
 
-PUT http://localhost:5000/api/user/626948426a669628de657621 HTTP/1.1
+PUT http://localhost:8000/api/user/62c40b9e9107606727e01f0f HTTP/1.1
 content-type: application/json
 
 {
-    "username": "newusername",
-    "userID": "626948426a669628de657621"
+    "name": "sahil new name",
+    "userID": "62c40b9e9107606727e01f0f"
 }
 
 ### Delete User
 
-DELETE http://localhost:5000/api/user/626948426a669628de657621 HTTP/1.1
+DELETE http://localhost:8000/api/user/62c40b9e9107606727e01f0f HTTP/1.1
 content-type: application/json
 
 {
-    "userID": "626948426a669628de657621"
+    "userID": "62c40b9e9107606727e01f0f"
 }
 
 ### Get User
 
-GET http://localhost:5000/api/user/62723b26d2170c982bfca347 HTTP/1.1
+GET http://localhost:8000/api/user/62c468d6b532628ed78a3e4c HTTP/1.1
 content-type: application/json
 
-### Add friend to user
-
-PUT http://localhost:5000/api/user/626a5d8004fbbc32e29b6257/friend HTTP/1.1
-content-type: application/json
-
-{
-    "userID": "626a5da704fbbc32e29b6259"
-}
-
-### Remove friend from user
-
-PUT http://localhost:5000/api/user/626a5d8004fbbc32e29b6257/unfriend HTTP/1.1
-content-type: application/json
-
-{
-    "userID": "626a5da704fbbc32e29b6259"
-}

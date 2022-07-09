@@ -6,14 +6,16 @@ const groupSchema = new mongoose.Schema({
         required: true,
         min: 3
     },
-    users: {
-        type: Array,
+    users: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }],
+    entries: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Entry',
         default: []
-    },
-    entries: {
-        type: Array,
-        default: []
-    },
+    }],
 }, { timestamps: true });
 
 module.exports = mongoose.model('Group', groupSchema);

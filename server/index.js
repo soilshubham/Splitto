@@ -6,11 +6,12 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 
 const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
 const groupRoutes = require('./routes/group');
+const entryRoutes = require('./routes/entry');
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/group', groupRoutes);
+app.use('/api/entry', entryRoutes);
 
 app.get('/', (req, res) => res.send('Hello World'));
 

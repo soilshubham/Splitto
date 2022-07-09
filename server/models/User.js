@@ -14,10 +14,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    groups: {
-        type: Array,
+    groups: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Group',
         default: []
-    },
+    }],
 }, { timestamps: true });
 
 

@@ -37,7 +37,8 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         // Find user by email
-        const user = await User.findOne({ email: req.body.email });
+        const user = await User.findOne({ email: req.body.email })
+            .populate({ path: 'groups', select: ['name'] });
         if (!user) {
             res.json({
                 msg: 'User not found',
