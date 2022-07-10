@@ -49,7 +49,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
-            .populate({ path: 'groups', select: ['name'] });
+            .populate('groups');
         const { password, updatedAt, createdAt, ...userData } = user._doc;
         res.status(200).json(userData);
     }

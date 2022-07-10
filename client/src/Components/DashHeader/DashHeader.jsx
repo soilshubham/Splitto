@@ -16,7 +16,7 @@ const DashHeader = () => {
       </div>
       <div className="flex gap-6">
         <div href="" className="">
-          {JSON.parse(localStorage.getItem("userData")).username}
+          {JSON.parse(localStorage.getItem("userData")).name}
         </div>
         <div className="cursor-pointer" onClick={handelLogout}>
           Logout

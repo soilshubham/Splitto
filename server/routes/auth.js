@@ -83,14 +83,16 @@ router.post('/create-group', async (req, res) => {
             name: req.body.name,
             users: [],
         });
-        const user = await User.findById(req.body.userID);
+        const user = await User.findById(req.body.userID)
         user.groups.push(newGroup._id);
         newGroup.users.push(user._id);
         await user.save();
         await newGroup.save();
+        const newUser = await User.findById(req.body.userID).populate('groups');
         res.json({
             msg: 'Group created successfully',
             msgError: false,
+            user: newUser
         });
     }
     catch (err) {

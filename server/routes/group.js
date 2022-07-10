@@ -12,18 +12,25 @@ router.post('/join-group', async (req, res) => {
             group.users.push(user._id);
             await user.save();
             await group.save();
-            res.status(200).json("Group Joined Successfully");
+
+            const newUser = await User.findById(req.body.userID).populate('groups');
+            res.status(200).json({
+                msg: "Group Joined Successfully",
+                msgError: false,
+                user: newUser
+            });
         } else {
-            res.status(200).json({ 
-                msgError: true, 
-                msg: "User already in group" 
+            res.status(200).json({
+                msgError: true,
+                msg: "User already in group",
+                user: user,
             });
         }
     }
     catch (err) {
-        res.status(500).json({ 
-            msgError: true, 
-            msg: "Error: " + err 
+        res.status(500).json({
+            msgError: true,
+            msg: "Error: " + err
         });
     }
 })
@@ -32,8 +39,8 @@ router.post('/join-group', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const group = await Group.findById(req.params.id)
-            .populate({ 
-                path: 'users', 
+            .populate({
+                path: 'users',
                 select: ['name'],
             })
             .populate({
@@ -47,15 +54,15 @@ router.get('/:id', async (req, res) => {
                     path: 'paidFor',
                     select: ['name'],
                 }
-            ],
-        });
+                ],
+            });
         const { updatedAt, ...groupData } = group._doc;
         res.status(200).json(groupData);
     }
     catch (err) {
-        res.status(500).json({ 
-            msgError: true, 
-            msg: "Error: " + err 
+        res.status(500).json({
+            msgError: true,
+            msg: "Error: " + err
         });
     }
 })

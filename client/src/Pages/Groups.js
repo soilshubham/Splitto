@@ -11,7 +11,9 @@ const Groups = () => {
   const [loading, setLoading] = useState(true);
   const [entryName, setEntryName] = useState('');
   const [entryAmount, setEntryAmount] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [entryPayer, setEntryPayer] = useState('');
+  const [entryPaidFor, setEntryPaidFor] = useState([]);
+  const [entryModal, setEntryModal] = useState(false);
   const [isInviteModalOpen, setIsInviteModalOpen] = useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [copyClip, setCopyClip] = useState(false);
@@ -41,7 +43,7 @@ const Groups = () => {
       });
       setEntryName('');
       setEntryAmount(0);
-      setIsModalOpen(false);
+      setEntryModal(false);
       fetchGroupData(id);
 
     }
@@ -100,12 +102,19 @@ const Groups = () => {
       <>
         {
           isInviteModalOpen &&
-          <div className="fixed instance-0 bg-[#191d2ec4] z-10 flex items-center justify-center w-screen h-screen">
-            <form className="bg-white flex flex-col justify-center items-center w-[30rem] rounded-lg p-7 shadow-2xl relative">
-              <div className="absolute top-4 right-6"><button onClick={() => {
-                setIsInviteModalOpen(false)
-                setCopyClip(false)
-              }} className='text-xl p-1 hover:scale-110 transition-all'>x</button></div>
+          <div className="fixed bg-[#2d234392] z-10 w-screen h-screen">
+            <form className="absolute left-1/2 top-1/3 -translate-y-1/2 -translate-x-1/2 rounded-lg p-7 shadow-2xl bg-white w-[23rem]">
+              <div className="absolute top-4 right-6">
+                <button
+                  onClick={() => {
+                    setIsInviteModalOpen(false)
+                    setCopyClip(false)
+                  }}
+                  className='text-xl p-1 hover:scale-110 transition-all'
+                >
+                  x
+                </button>
+              </div>
               <p className='text-center font-bold text-4xl md:text-2xl'>Invite Code</p>
               <div className="flex flex-col max-w-2xl w-full mt-10 gap-5">
                 <div
@@ -116,24 +125,26 @@ const Groups = () => {
                   className="text-center bg-gray-200 transition-all cursor-pointer hover:scale-105 p-4 truncate rounded-xl text-lg">
                   {id}
                 </div>
-                <div className={`text-center font-semibold ${copyClip ? "text-green-600" : "text-white"}`}>
-                  Copied to clipboard!
+                <div className={`text-center font-normal text-sm ${copyClip ? "text-green-600" : "text-gray-500"}`}>
+                  {copyClip ? "Copied To Clipboard!" : "Click to copy"}
                 </div>
-                {/* <button
-                  className="bg-[#9370DB] p-4 min-w-full rounded-lg text-white max-w-max"
-                  onClick={handleAddEntry}
-                >
-                  Add Entry
-                </button> */}
               </div>
             </form>
           </div>
         }
         {
+          // Update this later !!!!!!!!!!!!!
           isReportModalOpen &&
-          <div className="fixed instance-0 bg-[#191d2ec4] z-10 flex items-center justify-center w-screen h-screen">
-            <form className="bg-white flex flex-col justify-center items-center w-[23rem] rounded-lg p-7 shadow-2xl relative">
-              <div className="absolute top-4 right-6"><button onClick={() => setIsReportModalOpen(false)} className='text-xl p-1 hover:scale-110 transition-all'>x</button></div>
+          <div className="fixed bg-[#2d234392] z-10 w-screen h-screen">
+            <form className="absolute left-1/2 top-1/3 -translate-y-1/2 -translate-x-1/2 rounded-lg p-7 shadow-2xl bg-white w-[23rem]">
+              <div className="absolute top-4 right-6">
+                <button
+                  onClick={() => setIsReportModalOpen(false)}
+                  className='text-xl p-1 hover:scale-110 transition-all'
+                >
+                  x
+                </button>
+              </div>
               <p className='text-center font-bold text-4xl md:text-2xl'>Report</p>
               <div className="flex flex-col max-w-2xl w-full mt-10 gap-5">
                 <div className="flex justify-between items-center">
@@ -144,7 +155,9 @@ const Groups = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span>You Spent:</span>
-                  <span className='text-lg font-medium'>Rs. {getUserReportData().reduce((acc, curr) => parseInt(acc) + parseInt(curr.amount), 0)}</span>
+                  <span className='text-lg font-medium'>
+                    Rs. {getUserReportData().reduce((acc, curr) => parseInt(acc) + parseInt(curr.amount), 0)}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span>You Owe:</span>
@@ -160,16 +173,23 @@ const Groups = () => {
           </div>
         }
         {
-          isModalOpen &&
-          <div className="fixed instance-0 bg-[#191d2ec4] z-10 flex items-center justify-center w-screen h-screen">
-            <form className="bg-white flex flex-col justify-center items-center w-[23rem] rounded-lg p-7 shadow-2xl relative">
-              <div className="absolute top-4 right-6"><button onClick={() => setIsModalOpen(false)} className='text-xl p-1 hover:scale-110 transition-all'>x</button></div>
+          entryModal &&
+          <div className="fixed bg-[#2d234392] z-10 w-screen h-screen">
+            <form className="absolute left-1/2 top-1/3 -translate-y-1/2 -translate-x-1/2 rounded-lg p-7 shadow-2xl bg-white w-[23rem]">
+              <div className="absolute top-4 right-6">
+                <button
+                  onClick={() => setEntryModal(false)}
+                  className='text-xl p-1 hover:scale-110 transition-all'
+                >
+                  x
+                </button>
+              </div>
               <p className='text-center font-bold text-4xl md:text-2xl'>Entries</p>
               <div className="flex flex-col max-w-2xl w-full mt-10 gap-5">
                 <input
                   type="text"
                   name='Entry Name'
-                  className="bg-slate-100 p-4 min-w-full rounded-lg"
+                  className="bg-slate-50 p-4 min-w-full rounded-lg border-2 border-gray-100"
                   placeholder='Entry Title'
                   value={entryName}
                   onChange={(e) => setEntryName(e.target.value)}
@@ -177,11 +197,24 @@ const Groups = () => {
                 <input
                   type="number"
                   name='Amount'
-                  className="bg-slate-100 p-4 min-w-full rounded-lg"
+                  className="bg-slate-50 p-4 min-w-full rounded-lg border-2 border-gray-100"
                   placeholder='Amount'
                   value={entryAmount}
                   onChange={(e) => setEntryAmount(e.target.value)}
                 />
+                <div className="flex justify-between items-center">
+                  <span>Payer:</span>
+                  <span className='text-lg font-medium'>
+                    <select name="payer" id="payer">
+                      <option value="volvo">Volvo</option>
+                      <option value="saab">Saab</option>
+                      <option value="mercedes">Mercedes</option>
+                      <option value="audi">Audi</option>
+                    </select>
+                  </span>
+
+                </div>
+
                 <button
                   className="bg-[#9370DB] p-4 min-w-full rounded-lg text-white max-w-max"
                   onClick={handleAddEntry}
@@ -197,7 +230,7 @@ const Groups = () => {
           <DashHeader />
           <h1 className='font-light text-4xl capitalize'>{group.name}</h1>
           <div className="mt-6 flex gap-4 flex-wrap">
-            <button onClick={() => setIsModalOpen(true)} className="hover:scale-105 transition-all bg-gray-900 px-5 py-3 text-white rounded-md text-sm font-medium">
+            <button onClick={() => setEntryModal(true)} className="hover:scale-105 transition-all bg-gray-900 px-5 py-3 text-white rounded-md text-sm font-medium">
               + Add Entries
             </button>
             <button onClick={() => setIsInviteModalOpen(true)} className="hover:scale-105 transition-all bg-gray-900 px-5 py-3 text-white rounded-md text-sm font-medium">
