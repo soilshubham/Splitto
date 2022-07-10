@@ -78,14 +78,14 @@ export const GetGroup = async (id) => {
     }
 }
 
-export const AddEntry = async ({ groupID, name, amount, payerID, paidForID }) => {
+export const AddEntry = async ({ groupID, name, amount, payer, paidFor }) => {
     try {
         const res = await axios.post(`${API}/entry/add`, {
             groupID: groupID,
             name: name,
             amount: amount,
-            payerID: payerID,
-            paidForID: paidForID
+            payer: payer,
+            paidFor: paidFor
         })
 
         return res.data;
