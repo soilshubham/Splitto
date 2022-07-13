@@ -39,17 +39,17 @@ const Register = () => {
                         <input type="text" name='name'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="bg-slate-50 p-4 min-w-full rounded-lg border-gray-100"
+                            className="bg-slate-50 p-4 min-w-full rounded-lg border-gray-100 outline-none"
                             placeholder='Name' />
                         <input type="email" name='email'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="bg-slate-50 p-4 min-w-full rounded-lg border-gray-100"
+                            className="bg-slate-50 p-4 min-w-full rounded-lg border-gray-100 outline-none"
                             placeholder='Email' />
                         <input type="password" name='password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="bg-slate-50 p-4 min-w-full rounded-lg border-gray-100"
+                            className="bg-slate-50 p-4 min-w-full rounded-lg border-gray-100 outline-none"
                             placeholder='Password' />
                         <button
                             className="bg-[#9370DB] p-4 min-w-full rounded-lg text-white max-w-max"
