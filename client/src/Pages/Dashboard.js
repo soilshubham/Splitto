@@ -76,7 +76,7 @@ const Dashboard = () => {
                             <input type="text" name='username'
                                 value={addGroupName}
                                 onChange={(e) => setAddGroupName(e.target.value)}
-                                className="bg-slate-50 p-4 min-w-full rounded-lg border-2 border-gray-100"
+                                className="bg-slate-50 p-4 min-w-full rounded-lg border-2 border-gray-100 outline-none"
                                 placeholder='Group Name' />
 
                             <button
@@ -102,7 +102,7 @@ const Dashboard = () => {
                             <input type="text" name='inviteCode'
                                 value={joinGroupID}
                                 onChange={(e) => setJoinGroupID(e.target.value)}
-                                className="bg-slate-50 p-4 min-w-full rounded-lg border-2 border-gray-100"
+                                className="bg-slate-50 p-4 min-w-full rounded-lg border-2 border-gray-100 outline-none"
                                 placeholder='Invite Code' />
 
                             <button
