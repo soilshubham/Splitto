@@ -33,7 +33,7 @@ content-type: application/json
 {
     "name": "Food and Drinks",
     "amount": 500,
-    "payerID": "62c468d6b532628ed78a3e4c",
-    "paidForID": ["62c479123f2593b7997c2dc7"],
+    "payer": "62c468d6b532628ed78a3e4c",
+    "paidFor": ["62c479123f2593b7997c2dc7"],
     "groupID": "62c469d05a3f8f5396f47a73"
 }
