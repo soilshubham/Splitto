@@ -1,42 +1,39 @@
 ### Create Group
 
-POST http://localhost:5000/api/auth/create-group HTTP/1.1
+POST http://localhost:8000/api/auth/create-group HTTP/1.1
 content-type: application/json
 
 {
-    "userID": "62724c037a93424e6613daa7",
-    "name": "My group #1"
+    "userID": "62c468d6b532628ed78a3e4c",
+    "name": "Test group 01"
     
 }
 
 ### Get Group
 
-GET http://localhost:5000/api/group/6272386202cf747bcbf0f694 HTTP/1.1
+GET http://localhost:8000/api/group/62c469d05a3f8f5396f47a73 HTTP/1.1
 content-type: application/json
 
 
 ### Join Group
 
-POST http://localhost:5000/api/group/join-group HTTP/1.1
+POST http://localhost:8000/api/group/join-group HTTP/1.1
 content-type: application/json
 
 {
-    "userID": "62723b26d2170c982bfca347",
-    "groupID": "6272386202cf747bcbf0f694"
+    "userID": "62c479123f2593b7997c2dc7",
+    "groupID": "62c469d05a3f8f5396f47a73"
     
 }
 
 ### Add Entry
-POST http://localhost:5000/api/group/add-entry HTTP/1.1
+POST http://localhost:8000/api/entry/add HTTP/1.1
 content-type: application/json
 
 {
-    "userID": "6272796d0b3ef94fdeb1f3dd",
-    "groupID": "62727b19fa64cdc3f604b258",
-    "entry": {
-        "name": "Taxi charge",
-        "amount": 340,
-        "paidBy": "Rahul",
-        "payerID": "6272796d0b3ef94fdeb1f3dd"
-    }
+    "name": "Food and Drinks",
+    "amount": 500,
+    "payer": "62c468d6b532628ed78a3e4c",
+    "paidFor": ["62c479123f2593b7997c2dc7"],
+    "groupID": "62c469d05a3f8f5396f47a73"
 }

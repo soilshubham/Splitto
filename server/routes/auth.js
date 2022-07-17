@@ -12,7 +12,7 @@ router.post('/register', async (req, res) => {
 
         // Create new user
         const newUser = await new User({
-            username: req.body.username,
+            name: req.body.name,
             email: req.body.email,
             password: hashPassword,
         });
@@ -37,7 +37,8 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         // Find user by email
-        const user = await User.findOne({ email: req.body.email });
+        const user = await User.findOne({ email: req.body.email })
+            .populate({ path: 'groups', select: ['name'] });
         if (!user) {
             res.json({
                 msg: 'User not found',
@@ -46,12 +47,10 @@ router.post('/login', async (req, res) => {
         }
         else {
             const userData = {
-                username: user.username,
+                name: user.name,
                 email: user.email,
-                friends: user.friends,
                 groups: user.groups,
                 _id: user._id,
-                isAdmin: user.isAdmin,
             };
             const validPassword = await bcrypt.compare(req.body.password, user.password);
             if (validPassword) {
@@ -60,7 +59,8 @@ router.post('/login', async (req, res) => {
                     msg: "User logged in successfully",
                     user: userData
                 });
-            } else {
+            }
+            else {
                 res.json({
                     msgError: true,
                     msg: "Invalid password"
@@ -69,7 +69,10 @@ router.post('/login', async (req, res) => {
         }
     }
     catch (err) {
-        res.status(400).json({ msgError: true, msg: err.message });
+        res.status(400).json({
+            msgError: true,
+            msg: err.message
+        });
     }
 });
 
@@ -79,16 +82,17 @@ router.post('/create-group', async (req, res) => {
         const newGroup = await new Group({
             name: req.body.name,
             users: [],
-            entries: [],
         });
-        const user = await User.findById(req.body.userID);
+        const user = await User.findById(req.body.userID)
         user.groups.push(newGroup._id);
         newGroup.users.push(user._id);
         await user.save();
         await newGroup.save();
+        const newUser = await User.findById(req.body.userID).populate('groups');
         res.json({
             msg: 'Group created successfully',
             msgError: false,
+            user: newUser
         });
     }
     catch (err) {

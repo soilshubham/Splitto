@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API = "http://localhost:5000/api";
-export const RegisterUser = async ({ username, email, password }) => {
+const API = "http://localhost:8000/api";
+export const RegisterUser = async ({ name, email, password }) => {
     try {
         const res = await axios.post(`${API}/auth/register`, {
-            username: username,
+            name: name,
             email: email,
             password: password
         })
@@ -78,17 +78,14 @@ export const GetGroup = async (id) => {
     }
 }
 
-export const AddEntry = async ({ userID, groupID, name, amount, paidBy, payerID }) => {
+export const AddEntry = async ({ groupID, name, amount, payer, paidFor }) => {
     try {
-        const res = await axios.post(`${API}/group/add-entry`, {
-            userID: userID,
+        const res = await axios.post(`${API}/entry/add`, {
             groupID: groupID,
-            entry: {
-                name: name,
-                amount: amount,
-                paidBy: paidBy,
-                payerID: payerID
-            }
+            name: name,
+            amount: amount,
+            payer: payer,
+            paidFor: paidFor
         })
 
         return res.data;
