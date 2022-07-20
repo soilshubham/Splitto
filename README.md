@@ -1,12 +1,18 @@
 <h1 align="center">Splitto - Group Expense Management Software</h1>
 <p align="center">
-  <a href="" target="blank">
+  <a href="https://splitto-web.herokuapp.com/" target="_blank">
     <img src="https://user-images.githubusercontent.com/54865101/179399860-988d1611-442f-4d17-a4c1-da1cf37935c0.png"/>
   </a>
 </p>
 <br>
 <p align="center">
   A MERN application, which allows user<br> to manage their group expenses in an easier way
+</p>
+
+<p align="center">
+  <a href="https://splitto-web.herokuapp.com/">
+    Live Website
+  </a>
 </p>
 
 
