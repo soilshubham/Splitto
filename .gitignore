@@ -5,7 +5,6 @@
 /.pnp
 .pnp.js
 .env
-/client/build
 /client/node_modules
 
 # testing
