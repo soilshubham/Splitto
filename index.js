@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
+const path = require('path');
 
 const port = process.env.PORT || 8000;
 
@@ -36,8 +37,15 @@ app.use('/api/auth', authRoutes);
 app.use('/api/group', groupRoutes);
 app.use('/api/entry', entryRoutes);
 
-app.get('/', (req, res) => res.send('Hello World'));
-
+__dirname = path.resolve();
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+} else {
+    app.get('/', (req, res) => res.send('Hello World'));
+}
 
 
 app.listen(port, () => {

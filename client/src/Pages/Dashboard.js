@@ -64,7 +64,7 @@ const Dashboard = () => {
         <>
             {
                 addModal &&
-                <div className="fixed w-screen h-screen bg-[#2d234392]">
+                <div className="fixed w-screen h-screen bg-[#2d234392] z-50">
                     <form className="absolute left-1/2 top-1/3 -translate-y-1/2 -translate-x-1/2 rounded-lg p-7 shadow-2xl bg-white w-[23rem]">
                         <button className="absolute right-0 top-0 px-4 py-3"
                             onClick={() => setAddModal(false)}
@@ -145,9 +145,12 @@ const Dashboard = () => {
                                 }
                                 {
                                     user?.groups?.length === 0 &&
-                                    <Link to="/add-group" className="cursor-pointer hover:scale-105 transition-all bg-[#fff] border-2 shadow-lg md:min-w-fit min-w-full w-56 py-8 p-5 rounded-lg flex items-center justify-center">
+                                    <button
+                                        className="cursor-pointer hover:scale-105 transition-all bg-[#fff] border-2 shadow-lg md:min-w-fit min-w-full w-56 py-8 p-5 rounded-lg flex items-center justify-center"
+                                        onClick={() => setAddModal(true)}
+                                    >
                                         <span className="text-lg font-medium">+ Add Group</span>
-                                    </Link>
+                                    </button>
                                 }
                             </div>
                         </div>
